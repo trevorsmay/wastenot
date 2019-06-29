@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="styles/styles.css" type="text/css">
+    <!-- Font awesome for icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Google font for heading -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>My Profile - Food Finders</title>
+</head>
+
+<body>
+
+        
+        <div class="nav-side-menu">
+                <div class="brand"><img src="../public/assets/Image 6-26-19 at 8.29 PM.png" alt="logo"></div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+               <div class="row">
+                   <div class="col-md-2"></div>
+                <img class="col-md-8" src="../public/assets/PlaceHolderImage.jpg"  alt="profilePicture" id="profileImageSideBar">
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+            <h1 class="col-md-4" id="sidebarName">Jeffrey Westcott</h1>
+            <div class="col-md-4"></div>
+        </div>
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-home fa-lg"></i> Dashboard
+                            </a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                            <a href="#"><i class="fa fa-user fa-lg"></i> Profile</a>
+                        </li>
+
+                        <!-- IF YOU WANT TO HAVE A DROP DOWN FUNCTION TO THE SIDE NAV ELEMENTS -->
+                        
+                        <!-- <ul class="sub-menu collapse" id="products">
+                            <li class="active"><a href="#">CSS3 Animation</a></li>
+                        </ul> -->
+                        <li data-toggle="collapse" data-target="#service" class="collapsed">
+                            <a href="#"><i class="fa fa-car fa-lg"></i> New </a>
+                        </li>
+                        <ul class="sub-menu collapse" id="service">
+                            <li>Donate</li>
+                            <li>Volunteer</li>
+                            <li>Buy</li>
+                            <li>Sell</li>
+                        </ul>
+            
+            
+                        
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-file fa-lg"></i> Documents
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-sign-out-alt fa-lg"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="container" id="mqain">
+                <div class="row">
+                    <div class="col-md-12">
+                            <div> 
+                                    <div class="row" id="dashboardNav">
+                                        <a href="#" class="col-md-2" id="iWantToDonate">Donate
+                                    </a>
+                                        <a href="#" class="col-md-2" id="iWantToVolunteer">Volunteer</a>
+                                        <a href="#"  class="col-md-2" id="iWantToBuy">Buy</a>
+                                        <a href="#"  class="col-md-2" id="iWantToSell" >Sell</a>
+                                        <div class="col-md-2"></div>
+                                        <a href="#"  class="col-md-2" id="myProfile">My Profile</a>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+
+
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+
+
+
+
+
+
+    <!-- Index.js link -->
+    <script src="../public/js/index.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <!-- boostrap js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+
+
+</html>
