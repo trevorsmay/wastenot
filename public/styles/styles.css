@@ -1,3 +1,160 @@
+/* ======= Home Page =======*/
+
+/* page sections */
+.landing {
+  height:100vh;
+  background-image: url(https://www.solvay.com/sites/g/files/srpend221/files/styles/header/https/media.solvay.com/medias/domain1446/media403/61160-8sbe5pbpfw.jpg?itok=J8bcCEpd);
+  background-size: cover;
+  
+}
+
+.mission {
+  height: 100vh;
+}
+
+.footer {
+  height: 20vh;
+  background-color: grey;
+}
+
+/* nav */
+.login-btn {
+  color: black;
+}
+
+.register-btn {
+  color:black;
+}
+
+/*removable display none*/
+.none-hide {
+  visibility: hidden;
+}
+
+.fade-in {
+  -webkit-animation: fade1 3s;
+}
+
+@keyframes fade1 {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* animate stat */
+.home-stat {
+  color:white;
+}
+
+
+.ml9 {
+  position: relative;
+  font-weight: 500;
+  font-size: 4em;
+}
+
+.ml9 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml9 .letter {
+  transform-origin: 50% 100%;
+  display: inline-block;
+  line-height: 1em;
+}
+
+/*stat styling */
+.stat-host {
+  padding-top:210px;
+}
+
+.home-stat {
+  font-size: 60px;
+  opacity:1;
+}
+
+/* scroll button styling */
+.scroll-btn-host {
+  padding-top:85px;
+}
+
+.scroll-btn {
+  color:white;
+  border: solid 1px white;
+  padding: 20px;
+  border-radius: 30%;
+}
+
+.scroll-btn:hover {
+  cursor: pointer;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+}
+
+/* mission section */
+.mission-host-img {
+  padding-top: 60px;
+}
+
+.mission-host-text {
+  padding-top: 110px;
+}
+
+.mission-img {
+  height:12em;
+  width:.01em;
+  border-radius: 50%;
+}
+
+.btn-paragraph {
+  padding-top:60px;
+}
+
+.ml7 {
+  position: relative;
+  font-weight: 900;
+  font-size: 3.7em;
+}
+.ml7 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+.ml7 .letter {
+  transform-origin: 0 100%;
+  display: inline-block;
+  line-height: 1em;
+}
+
+.catch-phrase {
+  font-size: 30px;
+}
+
+.movement-btn-host {
+  padding-top:40px;
+}
+
+.movement-btn {
+  color:black;
+  border:solid 1px black;
+  padding:20px;
+}
+
+.movement-btn:hover {
+  cursor: pointer;
+  text-decoration: none;
+  background-color: black;
+  color:white;
+
+}
 
 /* Dashboard */
 .list-group-item {
