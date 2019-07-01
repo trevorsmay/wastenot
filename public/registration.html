@@ -17,99 +17,91 @@
 
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<body>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src="./images/logo.jpg" width="160" height="80" class="d-inline-block align-top" alt="">
+        </a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active login-btn" href="/login">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link register-btn" href="/register">Register</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+    </nav>
+    <div class="container">
 
-<body>
-    <div class="container" >
-        
         <div class="row">
-        <div class="col-md-8 ">
-            <h1 class="text-left">Food Solutions Registration</h1>
-            <p class="text-left">It is a long established fact that a reader will be distracted by the readable content
-                of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters, as opposed to using 'Content here, content here', making it look like
-                readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-                Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected
-                humour and the like).</p>
-        </div>
-        <br>
-        <br>
-        <div class="col-md-6">
-        <form>
-            <div class="form-row ">
-                <div class="form-group col-md-6">
-                    <label for="inputFirst Name">First Name</label>
-                    <input type="first name" class="form-control" id="inputEmail4" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                        <label for="inputLastName">Last Name</label>
-                        <input type="last name" class="form-control" id="inputLastName" placeholder="Last Name">
-                    </div>
-                    <div class="form-group col-md-6">
+            <div class="col-md-8 ">
+                <h1 class="text-left">Food Solutions Registration</h1>
+                <p class="text-left">It is a long established fact that a reader will be distracted by the readable
+                    content
+                    of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+                    normal distribution of letters, as opposed to using 'Content here, content here', making it look
+                    like
+                    readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                    default model text, and a search for 'lorem ipsum' will uncover many web sites still in their
+                    infancy.
+                    Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected
+                    humour and the like).</p>
+            </div>
+            <br>
+            <br>
+            <div class="col-md-6">
+                <form>
+                    <div class="form-row ">
+                        <div class="form-group col-md-6">
+                            <label for="inputFirst Name">First Name</label>
+                            <input type="first name" class="form-control" id="inputEmail4" placeholder="First Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLastName">Last Name</label>
+                            <input type="last name" class="form-control" id="inputLastName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="inputEmail4">Email</label>
                             <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                         </div>
 
-                <div class="form-group col-md-6">
-                    <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputState">State</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                </div>
-            </div>
-            <div class="form-group">
-    
-            <button type="submit" class="btn btn-primary">Sign in</button>
-            </form>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">City</label>
+                            <input type="text" class="form-control" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">State</label>
+                            <select id="inputState" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">Zip</label>
+                            <input type="text" class="form-control" id="inputZip">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div id="sign in"></div>
+                        <button type="button" class="btn btn-secondary btn-md"><a href="/dashboard">Sign In</a></button>
+                    </div>
+                </form>
             </div>
         </div>
-     </div>   
-</div>
-</div>
+    </div>
+    </div>
+    </div>
 
 
 
