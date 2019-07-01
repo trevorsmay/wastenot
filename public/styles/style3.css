@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-image: url('../images/background2.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    font-size: 40px;
+    color: white;
+    padding: 15px;
+}
+small{
+    font-size: 19px;
+    color: white;
+}
+.label{
+    font-size: 19px;
+    color: white;
+    border-radius: 0px;
+    border: 0px;
+}
+.form-control{
+    background: transparent;
+    color: white; 
+    border-radius: 0px;
+    border: 3px;
+    font-size: 21px;
+    border-bottom: 1px solid white;
+    margin-bottom: 15px;
+    border-top: 1px solid white;
+}
+hr{
+    color: white;
+}
