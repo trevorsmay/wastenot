@@ -1,5 +1,5 @@
 var db = require("../models");
-var passport = require("../config/passport");
+// var passport = require("../config/passport");
 
 module.exports = function (app) {
   // this route should find all contacts in the table and display them as JSON
@@ -11,9 +11,9 @@ module.exports = function (app) {
     })
   });
 
-  app.get("/api/login", passport.authenticate("local"), function(req,res){
-    res.json(req.user);
-  });
+  // app.get("/api/login", passport.authenticate("local"), function(req,res){
+  //   res.json(req.user);
+  // });
 
   // this route should add a new contact to the table
   app.post("/api/signup", function (req, res) {

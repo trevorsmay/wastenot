@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "null",
+    "password": "jcello69",
     "port": 3306,
     "database": "food_Solutions_Db",
     "host": "localhost",
