@@ -1,14 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "Arsenal11!",
-    "database": "exampledb",
+    "password": "null",
+    "port": 3306,
+    "database": "food_Solutions_Db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Arsenal11!",
+    "password": "null",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
