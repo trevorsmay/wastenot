@@ -1,14 +1,19 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "root",
     "database": "userdb",
+=======
+    "password": "Jessejames1!",
+    "database": "exampledb",
+>>>>>>> df89dabb41ec7dc1db4519ae2425594c07bf6e62
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "Jessejames1!",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",

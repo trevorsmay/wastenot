@@ -2,55 +2,44 @@
 <html>
 
 <head>
-    <title>The Movement</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Users/trevormay/Desktop/wastenot/Unsolved/public/styles/styles.css">
-    <style>
-      body {
-        text-align: center;
-      }
-
-      footer {
-        padding: 20px;
-        border-top: black;
-      }
-
-    </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Food Solutions: The Movement</title>
+      <!--Reset CSS Link-->
+      <link rel="stylesheet" type="text/css" href="./styles/reset.css">
+      <!--Bootstrap CDN-->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!--Custom CSS Link-->
+      <link rel="stylesheet" type="text/css" href="./styles/styles.css">
 </head>
 
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="https://cdn.pixabay.com/photo/2012/04/11/18/12/recycle-29227_1280.png">Food Solutions</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="/">
+                    <img src="./images/logo.jpg" width="160" height="80" class="d-inline-block align-top" alt="">
+                </a>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active login-btn" href="/login">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/register">Login</a>
+                        <a class="nav-link register-btn" href="/register">Register</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/register">Register</a>
-                    </li>
-                  </ul>
-                  <span class="navbar-text">
-                    Make the change. Don't waste.
-                  </span>
-                </div>
-              </nav>
-    <img src="https://assets.weforum.org/article/image/large_QeWpj_SruVf29NfBDFue0vdK_W0uHdOUPeNCO78ARbY.jpg" alt="headimage">
-    <div class="moveimage">
+                </ul>
+            </nav>
+
+<section class="movementimg"> 
         <h1 class="ml11">
                 <span class="text-wrapper">
                   <span class="line line1"></span>
                   <span class="letters">The Movement</span>
                 </span>
               </h1>
-            </div>
-    <div class="container">
+            </section>   
+          
+    <div class="container" id="movementstats">
         <p>
              <h2>Globally, we throw out about 1.3 billion tons of food a year, or a third of all the food that we grow.</h2>
         </p>
@@ -64,7 +53,7 @@
                 Food waste is a glaring measure of inequality. In poor countries, most of the food waste is on the farm or on its way to market. In South Asia, for instance, half of all the cauliflower that’s grown is lost because there’s not enough refrigeration, according to Rosa Rolle, an expert on food waste and loss at the United Nations Food and Agriculture Organization. Tomatoes get squished if they are packed into big sacks. In Southeast Asia, lettuce spoils on the way from farms to city supermarkets. Very little food in poor countries is thrown out by consumers. It’s too precious.
         </p>
 
-        <img src="http://www.fao.org/fileadmin/user_upload/save-food/images/graphics/mb060e02.jpg" alt="chart">
+        <img class src="http://www.fao.org/fileadmin/user_upload/save-food/images/graphics/mb060e02.jpg" alt="chart">
 
         
                 <h2>A global perspective on food waste.</h2>
@@ -82,19 +71,29 @@
             </p>
     </div>
     <div class="container" id="aboutus">
-            <div class="moveimage">
-                    <h1 class="ml11">
-                            <span class="text-wrapper">
-                              <span class="line line1"></span>
-                              <span class="letters">About the Team</span>
-                            </span>
-                          </h1>
-                          <img src="https://assets.teenvogue.com/photos/59b15844c534e00f766b9afb/16:9/w_1280%2Cc_limit/demi-lede.jpg" alt="thisisus" height="600" width="800">
+                    <h1 class="about-us">Meet the Team</h1>
+                          <img class="team-photo" src="https://assets.teenvogue.com/photos/59b15844c534e00f766b9afb/16:9/w_1280%2Cc_limit/demi-lede.jpg" alt="thisisus" height="600" width="800">
+                          <p>
+                            Our team consists of four people that are dedicated to helping reduce our planet's food waste.
+                          </p>
+                          <p>
+                            Meet Jeff, Jake, Zac and Trevor.
+                          </p>
+                          <p>
+                            Feel free to contact us with any inquiries or collaboration ideas. 
+                          </p>
+
                         </div>
-        
+                        
     </div>
     <footer>
         <a href="/contact">Contact Us</a>
     </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+<!--Anime JS Link-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<!--Style JS Link=-->
+<script type="text/javascript" src="./js/style.js"></script>
 </html>
