@@ -3,7 +3,7 @@
     "username": "root",
     "password": "jcello69",
     "port": 3306,
-    "database": "food_Solutions_Db",
+    "database": "food_solutions_db",
     "host": "localhost",
     "dialect": "mysql"
   },
