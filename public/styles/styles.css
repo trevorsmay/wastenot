@@ -8,9 +8,6 @@
   
 }
 
-<<<<<<< HEAD
-
-=======
 .mission {
   height: 100vh;
 }
@@ -157,7 +154,6 @@
   background-color: black;
   color:white;
 }
->>>>>>> 8c4d4ffcb35f989ae0c80544904b66d4b7bc424e
 
 
 
@@ -366,11 +362,18 @@ body {
 
 .about-us {
   padding-top: 10px;
-  margin-top: 50px;
+  margin-top: 200px;
   text-align: center;
 }
 
 .team-photo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.graph {
   display: block;
   margin-left: auto;
   margin-right: auto;

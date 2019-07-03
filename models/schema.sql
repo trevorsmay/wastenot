@@ -1,5 +1,6 @@
-DROP DATABASE IF EXISTS businessdb;
-CREATE DATABASE businessdb;
+DROP DATABASE IF EXISTS food_solutionsdb;
+CREATE DATABASE food_solutionsdb;
 
-DROP DATABASE IF EXISTS personaldb;
-CREATE DATABASE personaldb;
+USE food_solutionsdb;
+DROP TABLE profiles;
+

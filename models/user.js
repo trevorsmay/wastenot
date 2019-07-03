@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var user = sequelize.define("profile", {
+  var User = sequelize.define("User", {
         // firstName (VARCHAR, NOT NULL, between 1-30 characters)
         firstName: { 
           type: DataTypes.STRING, 
@@ -26,32 +26,49 @@ module.exports = function(sequelize, DataTypes) {
           }
       },
       
-      //address. string. length?
-      address: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-              len: [1,255]
-          }
+      // phoneNumber (VARCHAR, NULL, length 10 characters, numbers only)
+        phoneNumber: {
+            type: DataTypes.STRING,
+            validate: {
+            len: [10,10],
+            isNumeric: true
+                }
+            },
+
+
+    // emailAddress (VARCHAR, NULL, must be valid email format)
+        emailAddress: {
+            type: DataTypes.STRING,
+            unique: true,
+            validate: {
+            isEmail: true
+                }
+            },
+
+    // The password cannot be null
+        password: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
 
-      // phoneNumber (VARCHAR, NULL, length 10 characters, numbers only)
-      phoneNumber: {
-          type: DataTypes.STRING,
-          validate: {
-              len: [10,10],
-              isNumeric: true
-          }
-      },
-      
       //location. validation allows letters only. 
       location: {
           type: DataTypes.STRING,
           allowNull: false,
           validate: {
-              is: ["^[a-z]+$", 'i']
+              is: ["^[a-z]+$", 'i'],
+              len: [1,255]
           }
       },
+
+            //user photo. URL only. Need to figure out how to use BLOB.
+        photo: {
+            type: DataTypes.BLOB,
+            validate: {
+            isUrl: true
+            }
+        },
+
       //times donated
       timesDonated: {
           type: DataTypes.INTEGER,
@@ -59,31 +76,21 @@ module.exports = function(sequelize, DataTypes) {
             //somehow need to increment w/ donations
       },
 
-
-      // emailAddress (VARCHAR, NULL, must be valid email format)
-      emailAddress: {
-          type: DataTypes.STRING,
-          validate: {
-              isEmail: true
-          }
+      timesVolunteered: {
+          type: DataTypes.INTEGER,
       },
-      
-      //user photo. URL only. Need to figure out how to use BLOB.
-      photo: {
-      type: DataTypes.BLOB,
-      validate: {
-          isUrl: true
-      }
-    },
+
+      moneyEarned: {
+        type: DataTypes.INTEGER
+      },
 
     //money spent on food
-    moneySpent: {
-        type: DataTypes.STRING
-    }
-
+    itemsSold: {
+        type: DataTypes.INTEGER
+    },
   });
 
-  var Donate = sequelize.define("Donate", {
+  var job = sequelize.define("Job", {
     //food type, only letters. 
     foodType: {
         type: DataTypes.STRING,
@@ -121,47 +128,26 @@ module.exports = function(sequelize, DataTypes) {
     pickupTime: {
         type: DataTypes.STRING,
         allowNull: false,
-    }
-
-  });
-
-  var Sell = sequelize.define("Sell", {
-      //type of food
-      foodType: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            is: ["^[a-z]+$", 'i']
-        }
     },
 
-    //quantity
-    foodQuantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-
-    //food expiration
-    foodExpire: {
-        type: DataTypes.STRING,
-        deadline: DataTypes.DATE,
-        validate: {
-            isDate: true 
-        }
-    },
-
-    //time for pick up
-    pickupTime: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-
-    //cost for ugly produce.
     price: {
         type: DataTypes.STRING,
         allowNull: false,
     }
 
   });
-  return user;
+
+
+  User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  // Hooks are automatic methods that run during various phases of the User Model lifecycle
+  // In this case, before a User is created, we will automatically hash their password
+  User.addHook("beforeCreate", function(user) {
+    User.password = bcrypt.hashSync(Unoser.password, bcrypt.genSaltSync(10), null);
+  });
+  return User;
+  return job;
+  //return User;
 };
+
