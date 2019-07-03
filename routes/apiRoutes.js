@@ -30,7 +30,7 @@ module.exports = function (app) {
     // This will store a large set of data that is being passed from the front end
     // through the req.body
     // the logic below is emplementing an es6 shortcut called object deconstruction
-    // 
+  
     var {
       firstName,
       lastName,
@@ -63,12 +63,13 @@ module.exports = function (app) {
     // here is where the computer sends the object to the model and the database
     console.log(newUser)
     db.User.create(newUser).then(function (user) {
-        console.log('testing');
+        console.log("testing");
         console.log(user);
         // res.redirect(307, "api/login");
         res.json(user);
       })
       .catch(function (err) {
+        console.log("heres the catch")
         console.log('error:', err)
         res.status(401).json(err);
       })

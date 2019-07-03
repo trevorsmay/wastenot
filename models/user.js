@@ -39,10 +39,10 @@ module.exports = function(sequelize, DataTypes) {
     // emailAddress (VARCHAR, NULL, must be valid email format)
         emailAddress: {
             type: DataTypes.STRING,
-            unique: true,
-            validate: {
-            isEmail: true
-                }
+            // unique: true,
+            // validate: {
+            // isEmail: true
+            //     }
             },
 
     // The password cannot be null
@@ -146,7 +146,7 @@ module.exports = function(sequelize, DataTypes) {
 //   User.addHook("beforeCreate", function(user) {
 //     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
 //   });
-  return (User, job);
+  return (User);
   
   //return User;
 };
