@@ -8,9 +8,6 @@
   
 }
 
-<<<<<<< HEAD
-
-=======
 .mission {
   height: 100vh;
 }
@@ -157,7 +154,6 @@
   background-color: black;
   color:white;
 }
->>>>>>> 8c4d4ffcb35f989ae0c80544904b66d4b7bc424e
 
 
 
@@ -177,7 +173,8 @@
   top: 0px;
   width: 300px;
   height: 100%;
-  color: black;
+  color: black; 
+   border-right:solid 1px black;
 }
 .nav-side-menu .brand {
   background-color: white;
@@ -218,7 +215,7 @@
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
-  float: right;
+  /* float: right; */
 }
 .nav-side-menu ul .active,
 .nav-side-menu li .active {
@@ -318,24 +315,6 @@ body {
   padding: 0px;
 }
 
-#dashboardNav{
-  margin-top: 75px;
-  padding-bottom: 10px;
-  border-bottom: solid black 1px;
-}
- #dashboardNav a {
- color: black;
-}
-
-#dasboardNav a:hover {
- color: hotpink;
-
-}
-
-#dasboardNav a:visited{
-  color: black;
-}
-
 #profileImageSideBar{
   border-radius: 50%;
   width: 70%;
@@ -344,10 +323,38 @@ body {
 
 #sidebarName {
   font-size: 20pt;
+}
+
+.donate-form {
+  margin-top:20px;
+}
+
+.display-hide {
+  display:none;
+}
+
+.dashboardNav {
+  padding: 30px;
+  border-bottom: 1px solid black;
+  background-color:green;
+}
+
+.dashboard-a:hover {
+  background-color:gold;
 
 }
-@media screen and (max-width:767px){
-#profileImageSideBar {
+
+.hide-content {
   display: none;
 }
+
+#dashboard-content {
+  padding-top:20px;
 }
+
+
+@media screen and (max-width:767px){
+  #profileImageSideBar {
+    display: none;
+  }
+  }
