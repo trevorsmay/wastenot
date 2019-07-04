@@ -1,5 +1,5 @@
 var db = require("../models");
-// var passport = require("../config/passport");
+var passport = require("../config/passport");
 
 module.exports = function (app) {
 
@@ -25,8 +25,15 @@ module.exports = function (app) {
     })
   });
 
+  // Using the passport.authenticate middleware with our local strategy.
+  // If the user has valid login credentials, send them to the members page.
+  // Otherwise the user will be sent an error
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    res.json(req.user);
+  });
+
   // This post route gives the front end the capability to add users to the database
-  app.post("/api/signup", function (req, res) {
+  app.post("/api/register", function (req, res) {
     // This will store a large set of data that is being passed from the front end
     // through the req.body
     // the logic below is emplementing an es6 shortcut called object deconstruction
@@ -36,7 +43,7 @@ module.exports = function (app) {
       lastName,
       companyName,
       phoneNumber,
-      emailAddress,
+      email,
       password,
       location,
       photo,
@@ -51,7 +58,7 @@ module.exports = function (app) {
       lastName,
       companyName,
       phoneNumber,
-      emailAddress,
+      email,
       password,
       location,
       photo,
@@ -61,18 +68,17 @@ module.exports = function (app) {
       itemsSold
     };
     // here is where the computer sends the object to the model and the database
-    console.log(newUser)
-    db.User.create(newUser).then(function (user) {
-        console.log("testing");
-        console.log(user);
-        // res.redirect(307, "api/login");
-        res.json(user);
-      })
-      .catch(function (err) {
-        console.log("heres the catch")
-        console.log('error:', err)
-        res.status(401).json(err);
-      })
+    console.log(db.User)
+    db.User.create(newUser).then(function(user) {
+      console.log("I am not the catch ")
+      // res.redirect(307, "/api/login");
+      res.json(user);
+    })
+    .catch(function(err) {
+      console.log("I am the catch" + err)
+      res.status(401).json(err);
+    });
+     
   });
 
   // this will add jobs to the jobs database.
@@ -83,7 +89,9 @@ module.exports = function (app) {
       foodExpire,
       pickupLocation,
       pickupTime,
-      price
+      price,
+      active
+
     } = req.body;
     var newJob = {
       foodType,
@@ -91,7 +99,8 @@ module.exports = function (app) {
       foodExpire,
       pickupLocation,
       pickupTime,
-      price
+      price,
+      active
     }
 
     console.log(newJob);
@@ -199,7 +208,7 @@ module.exports = function (app) {
       lastName,
       companyName,
       phoneNumber,
-      emailAddress,
+      email,
       password,
       location,
       photo,
@@ -214,7 +223,7 @@ module.exports = function (app) {
       lastName,
       companyName,
       phoneNumber,
-      emailAddress,
+      email,
       password,
       location,
       photo,
@@ -234,5 +243,27 @@ module.exports = function (app) {
   })
 
 
+  // this will permenantly delete a Job from the data base
+  // Figure we would do this call instead of updateing the active status if someone were
+  // to cancel their order all together
+  // this will not reorder the Id numbers
+  app.delete("/api/deleteJob/:id", (req, res) =>
+      db.job.destroy({
+        where: {
+         id: req.params.id
+        }
+      }).then( (result) => res.json(result))
+      )
 
-}
+  // Delete a user from the database 
+  // warning this is permenant
+  // Used when someone wants to delete their account
+  app.delete( "/api/deleteUser/:id", (req, res) =>
+    db.User.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then( (result) => res.json(result) )
+  );
+
+};

@@ -6,34 +6,62 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  registerUser: function(user_data) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "/api/register",
+      data: JSON.stringify(user_data)
     });
   },
-  getExamples: function() {
+  postJob: function(job){
     return $.ajax({
-      url: "api/examples",
+      headers: {
+        "content-type": "application/json"
+      },
+      type: "POST",
+      url: "/api/addJob"
+    })
+  },
+  getAllUserData: function() {
+    return $.ajax({
+      url: "/api/getAllUsers",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  getAllJobs: function(){
+    return $.ajax({
+      url:"/api/getAllJobs",
+      type: "GET"
+    });
+  },
+  deleteUser: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+  deleteJob: function(id){
+    return $.ajax({
+      url: "/api/deleteJob/" + id,
+      type: "DELETE"
+    })
+  },
+  updateUser: function(req, id){
+    return $.ajax({
+      url: "/api/updateUserInfo/" +id,
+      type:"UPDATE",
+      data: JSON.stringify(req)
+    })
   }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+var postJobs = function() {
+  API.getAllJobs().then(function(data) {
+    var $jobs = data.map(function(example) {
       var $a = $("<a>")
         .text(example.text)
         .attr("href", "/example/" + example.id);
@@ -55,7 +83,7 @@ var refreshExamples = function() {
     });
 
     $exampleList.empty();
-    $exampleList.append($examples);
+    $exampleList.append($jobs);
   });
 };
 
@@ -93,6 +121,8 @@ var handleDeleteBtnClick = function() {
     refreshExamples();
   });
 };
+
+postJobs();
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
