@@ -41,10 +41,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        status: {
-            type:DataTypes.BOOLEAN,
+        // status: {
+        //     type:DataTypes.BOOLEAN,
 
-        }
+        // }
     
       });
     

@@ -56,15 +56,16 @@ module.exports = function(sequelize, DataTypes) {
       location: {
           type: DataTypes.STRING,
           allowNull: false,
-          validate: {
-              is: ["^[a-z]+$", 'i'],
-              len: [1,255]
-          }
+        //   validate: {
+        //       is: ["^[a-z]+$", 'i'],
+        //       len: [1,255]
+        //   }
       },
 
             //user photo. URL only. Need to figure out how to use BLOB.
         photo: {
             type: DataTypes.STRING,
+            allowNull: true,
             // validate: {
             // isUrl: true
             // }
