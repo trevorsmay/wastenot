@@ -1,208 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
+
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Profile</title>
-    <!--Reset CSS Link-->
-    <link rel="stylesheet" type="text/css" href="./styles/reset.css">
-    <!--Bootstrap CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--Custom CSS Link-->
-    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css">
     <!-- Font awesome for icon -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- Google font for heading -->
     <link href="https://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet">
-</head>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>My Profile - Food Finders</title>
+</head> 
 
 <body>
-    <div class="container-fluid">
-        <!--Nav Bar Div-->
+
+        
         <div class="nav-side-menu">
-            <!--Logo Image-->
-            <div class="brand">
-                <img src="./images/logo.jpg" alt="logo">
-            </div>
-            <!--Nav Collapse-->
-            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-            <!--Profile Img-->
-            <div class="row">
-                <div class="col-md-2"></div>
-                <img class="col-md-8" src="./assets/PlaceHolderImage.jpg" alt="profilePicture" id="profileImageSideBar">
+                <div class="brand"><img src="../public/assets/Image 6-26-19 at 8.29 PM.png" alt="logo"></div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+               <div class="row">
+                   <div class="col-md-2"></div>
+                <img class="col-md-8" src="../public/assets/PlaceHolderImage.jpg"  alt="profilePicture" id="profileImageSideBar">
                 <div class="col-md-2"></div>
             </div>
-            <!--Profile Name-->
             <div class="row">
                 <div class="col-md-3"></div>
-                <h1 class="col-md-4" id="sidebarName">Jeffrey Westcott</h1>
-                <div class="col-md-4"></div>
-            </div>
-            <!--Side Bar Menu-->
-            <div class="menu-list">
-                <ul id="menu-content" class="menu-content collapse out">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-home fa-lg"></i> Dashboard
-                        </a>
-                    </li>
-                    <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                        <a href="#"><i class="fa fa-user fa-lg"></i> Profile</a>
-                    </li>
-                    <li data-toggle="collapse" data-target="#service" class="collapsed">
-                        <a href="#"><i class="fa fa-car fa-lg"></i> New </a>
-                    </li>
-                    <ul class="sub-menu collapse" id="service">
-                        <li>Donate</li>
-                        <li>Volunteer</li>
+            <h1 class="col-md-4" id="sidebarName">Jeffrey Westcott</h1>
+            <div class="col-md-4"></div>
+        </div>
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-home fa-lg"></i> Dashboard
+                            </a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                            <a href="#"><i class="fa fa-user fa-lg"></i> Profile</a>
+                        </li>
+
+                        <!-- IF YOU WANT TO HAVE A DROP DOWN FUNCTION TO THE SIDE NAV ELEMENTS -->
+                        
+                        <!-- <ul class="sub-menu collapse" id="products">
+                            <li class="active"><a href="#">CSS3 Animation</a></li>
+                        </ul> -->
+                        <li data-toggle="collapse" data-target="#service" class="collapsed">
+                            <a href="#"><i class="fa fa-car fa-lg"></i> New </a>
+                        </li>
+                        <ul class="sub-menu collapse" id="service">
+                            <li>Donate</li>
+                            <li>Volunteer</li>
+                            <li>Buy</li>
+                            <li>Sell</li>
+                        </ul>
+            
+            
+                        
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-file fa-lg"></i> Documents
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-sign-out-alt fa-lg"></i> Logout
+                            </a>
+                        </li>
                     </ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-file fa-lg"></i> Documents
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-sign-out-alt fa-lg"></i> Logout
-                        </a>
-                    </li>
-                </ul>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <!--Dashboard Nav-->
-        <div class="row dashboardNav">
-            <div class="col-md-2"></div>
-            <div class="col-md-5 text-center">
-                <button class="dashboard-a" id="donate-btn">Donate</button>
-            </div>
-            <div class="col-md-5 text-center">
-                <button class="dashboard-a" id="volunteer-btn">Volunteer</button>
-            </div>
-        </div>
-        <!--Dashboard Content Row-->
-        <div class="row">
-            <div class="col-md-3"></div>
-            <!-- ==== Dashboard Landing Content ==== -->
-            <div class="col-md-8 grab-landing" id="dashboard-content">
-                <h1 class="user-name">Hello Jeffrey</h1>
-                <h3 class="profile-headers">Your Donations:</h3>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Item</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="donations-table">
-                        <tr>
-                            <td>12/13/2018</td>
-                            <td>Apples</td>
-                            <td>36</td>
-                            <td>Complete</td>
-                        </tr>
-                        <tr>
-                            <td>2/26/2019</td>
-                            <td>Canned Goods</td>
-                            <td>12</td>
-                            <td>In Progress</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h3 class="profile-headers">Your Jobs:</h3>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Donated By</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="jobs-table">
-                        <tr>
-                            <td>12/13/2018</td>
-                            <td>Jane Doe</td>
-                            <td>1775 Main St Denver, CO</td>
-                            <td>Complete</td>
-                        </tr>
-                        <tr>
-                            <td>2/26/2019</td>
-                            <td>John Doe</td>
-                            <td>468 E Colfax Denver, CO</td>
-                            <td>In Progress</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- ==== Donate submission ==== -->
-            <div class="col-md-8 hide-content grab-donate" id="dashboard-content">
-                <!--Donation Form-->
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Food Type</label>
-                        <input type="text" class="form-control food-type" id="exampleFormControlInput1"
-                            placeholder="Apples">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Quantity</label>
-                        <input type="text" class="form-control food-quantity" id="exampleFormControlInput1"
-                            placeholder="24">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Estimated Expiration</label>
-                        <input type="text" class="form-control food-exp" id="exampleFormControlInput1"
-                            placeholder="12/13/2019">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Location</label>
-                        <input type="text" class="form-control food-location" id="exampleFormControlInput1"
-                            placeholder="1775 Main Street Denver CO">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Pick Up Time</label>
-                        <input type="text" class="form-control pick-up-time" id="exampleFormControlInput1"
-                            placeholder="5:30pm">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Comments</label>
-                        <textarea class="form-control food-comments" id="exampleFormControlTextarea1"
-                            rows="3"></textarea>
-                    </div>
-                    <button type="button" class="btn btn-success" id="form-donate-submit">Submit</button>
-                </form>
-                <!--Modal Submit-->
-                <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <div class="modal-text"></div>
+            
+            <div class="container" id="mqain">
+                <div class="row">
+                    <div class="col-md-12">
+                            <div> 
+                                    <div class="row" id="dashboardNav">
+                                       
+                                        <a href="#" class="col-md-2" id="iWantToDonate">Donate
+                                    </a>
+                                        <a href="#" class="col-md-2" id="iWantToVolunteer">Volunteer</a>
+                                        <a href="#"  class="col-md-2" id="iWantToBuy">Buy</a>
+                                        <a href="#"  class="col-md-2" id="iWantToSell" >Sell</a>
+                                        <div class="col-md-2"></div>
+                                        <a href="#"  class="col-md-2" id="myProfile">My Profile</a>
+                                    </div>
+
+                                    <div id="example-list" >
+                                        
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </div>
-            <!-- ==== Donation Confirmation column that appears on submissiont of a donation ====-->
-            <div class="col-md-8 hide-content donation-confirmation text-center" id="dashboard-content">
-                <h1 class="confirm-message text-center">Thank You For Your Donation!</h1>
-                <h1 class="confirm-message text-center">Your Job Has Been Posted!</h1>
-                <a class="profile-return" href="/dashboard">Back To Profile</a>
-            </div>
-            <div class="col-md-1"></div>
-        </div>
-    </div>
+
+
+
+
+
+
+    <!-- Index.js link -->
+    <script src="js/index.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <!-- popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <!-- boostrap js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </body>
-<!--JQuery CDN-->
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-<!--Anime JS Link-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-<!--Style JS Link=-->
-<script type="text/javascript" src="./js/style.js"></script>
-<!--Index JS Link-->
-<script type="text/javascript" src="./js/index.js"></script>
+
+
 
 </html>
