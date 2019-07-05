@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "jcello69",
-    "port": 3306,
-    "database": "food_solutions_db",
+    "password": "root",
+    "port": 8889,
+    "database": "food_solutions",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "null",
+    "password": "root",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
