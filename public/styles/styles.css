@@ -173,7 +173,8 @@
   top: 0px;
   width: 300px;
   height: 100%;
-  color: black;
+  color: black; 
+   border-right:solid 1px black;
 }
 .nav-side-menu .brand {
   background-color: white;
@@ -214,7 +215,7 @@
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
-  float: right;
+  /* float: right; */
 }
 .nav-side-menu ul .active,
 .nav-side-menu li .active {
@@ -314,24 +315,6 @@ body {
   padding: 0px;
 }
 
-#dashboardNav{
-  margin-top: 75px;
-  padding-bottom: 10px;
-  border-bottom: solid black 1px;
-}
- #dashboardNav a {
- color: black;
-}
-
-#dasboardNav a:hover {
- color: hotpink;
-
-}
-
-#dasboardNav a:visited{
-  color: black;
-}
-
 #profileImageSideBar{
   border-radius: 50%;
   width: 70%;
@@ -340,52 +323,84 @@ body {
 
 #sidebarName {
   font-size: 20pt;
+}
+
+.donate-form {
+  margin-top:20px;
+}
+
+.display-hide {
+  display:none;
+}
+
+.dashboardNav {
+  padding: 30px;
+  border-bottom: 1px solid black;
+  background-color:green;
+}
+
+.dashboard-a:hover {
+  background-color:gold;
 
 }
-@media screen and (max-width:767px){
-#profileImageSideBar {
+
+.hide-content {
   display: none;
 }
+
+#dashboard-content {
+  padding-top:20px;
 }
 
-.movementimg {
-  background-size: cover;
-  background-image: url(https://assets.weforum.org/article/image/large_QeWpj_SruVf29NfBDFue0vdK_W0uHdOUPeNCO78ARbY.jpg);
-  height: 500px;
+/* The Modal Background */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
 }
 
-.ml11 {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif; 
-  font-size: 95px;
-}
-
-.about-us {
-  padding-top: 10px;
-  margin-top: 200px;
-  text-align: center;
-}
-
-.team-photo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
   width: 80%;
 }
 
-.graph {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project-description {
+    font-family: 'Mandali', sans-serif;
+    line-height: 1.5;
+    font-size:15px;
+    
 }
 
 
-
-footer {
-text-align: center;
-background-color: lightgray;
-}
-
-
-
+@media screen and (max-width:767px){
+  #profileImageSideBar {
+    display: none;
+  }
+  }
