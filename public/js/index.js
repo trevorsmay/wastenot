@@ -53,23 +53,24 @@ var API = {
       type: "UPDATE",
       data: JSON.stringify(req)
     })
+  },
+  updateJob: function (req, id){
+    return $.ajax({
+      url: "/api/updateJob/" + id,
+      type: "UPDATE",
+      data: JSON.stringify(req)
+    })
   }
 };
 
-// var newUser = {
-//   firstName,
-//   lastName,
-//   companyName,
-//   phoneNumber,
-//   email,
-//   password,
-//   location,
-//   photo,
-//   timesDonated,
-//   timesVolunteered,
-//   moneyEarned,
-//   itemsSold,
-// }
+
+var newUser;
+$("#register").on("click", function (e) {
+ e.preventDefault();
+  } 
+};
+
+
 var newUSer;
 $("#register").on("click", function (e) {
  
@@ -81,7 +82,7 @@ console.log("something")
   var email = $("#email").val();
   var password = $("#password").val();
   var location = $("#autocomplete").val();
-  var photo = $("#photo");
+  var photo = "blank";
   var timesDonated = 0;
   var timesVolunteered = 0;
   var moneyEarned = 0;
@@ -101,10 +102,14 @@ console.log("something")
     itemsSold,
     
   }
-  console.log(newUser);
-
+  $.ajax({
+    type: "POST",
+    url: "/api/register",
+    data: JSON.stringify(newUser)
+  });
   
-  API.registerUser(NewUser).then(function (data){
+  API.registerUser(newUser).then(function (data){
+    console.log("APi hit");
     console.log(data);
     refreshExamples();
   })
@@ -176,14 +181,90 @@ var handleDeleteBtnClick = function () {
   API.deleteExample(idToDelete).then(function () {
     refreshExamples();
   });
+  
+  console.log(newUser);
+
+  
+  API.registerUser(NewUser).then(function (data){
+    console.log(data);
+    refreshExamples();
+  })
+});
+
+var refreshExamples = function(){
+  console.log("refresh Examples");
+}
+
+// refreshExamples gets new examples from the db and repopulates the list
+var postJobs = function () {
+  API.getAllJobs().then(function (data) {
+    var $jobs = data.map(function (example) {
+      var $a = $("<a>")
+        .text(example.text)
+        .attr("href", "/example/" + example.id);
+
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": example.id
+        })
+        .append($a);
+
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-right delete")
+        .text("ｘ");
+
+      $li.append($button);
+
+      return $li;
+    });
+
+    $exampleList.empty();
+    $exampleList.append($jobs);
+  });
 };
 
-postJobs();
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleFormSubmit = function (event) {
+  event.preventDefault();
+
+  var example = {
+    text: $exampleText.val().trim(),
+    description: $exampleDescription.val().trim()
+  };
+
+  if (!(example.text && example.description)) {
+    alert("You must enter an example text and description!");
+    return;
+  }
+
+  API.saveExample(example).then(function () {
+    refreshExamples();
+  });
+
+  $exampleText.val("");
+  $exampleDescription.val("");
+
+};
+
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
+var handleDeleteBtnClick = function () {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+
+  API.deleteExample(idToDelete).then(function () {
+    refreshExamples();
+  });
+};
+
+
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-
 
 var placeSearch, autocomplete;
 
@@ -198,7 +279,19 @@ var componentForm = {
   country: 'long_name',
   postal_code: 'short_name'
 };
+var placeSearch, autocomplete;
 
+// var autocomplete2
+
+var componentForm = {
+
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
 
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search predictions to
@@ -212,13 +305,34 @@ function initAutocomplete() {
 
   // autocomplete2 = new google.maps.places.Autocomplete(
   //     document.getElementById('registrationAutoComplete'), {types: ['geocode']});
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search predictions to
+  // geographical location types.
+  console.log("InitAutoComplete")
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById('autocomplete'), {
+      types: ['geocode']
+    });
+  var place = autocomplete.getPlace();
 
+  // autocomplete2 = new google.maps.places.Autocomplete(
+  //     document.getElementById('registrationAutoComplete'), {types: ['geocode']});
 
   // Avoid paying for data that you don't need by restricting the set of
   // place fields that are returned to just the address components.
   autocomplete.setFields(['address_component']);
   // autocomplete2.setFields(['address_component']);
 
+  // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+  autocomplete.setFields(['address_component']);
+  // autocomplete2.setFields(['address_component']);
+
+  // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+  autocomplete.addListener('place_changed', fillInAddress);
+  // autocomplete2.addListener('place_changed', fillInAddress)
+}
 
   // When the user selects an address from the drop-down, populate the
   // address fields in the form.
