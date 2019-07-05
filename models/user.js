@@ -1,3 +1,5 @@
+
+var bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
         // firstName (VARCHAR, NOT NULL, between 1-30 characters)
@@ -30,14 +32,14 @@ module.exports = function(sequelize, DataTypes) {
         phoneNumber: {
             type: DataTypes.STRING,
             validate: {
-            len: [10,10],
+            len: [10,11],
             isNumeric: true
                 }
             },
 
 
     // emailAddress (VARCHAR, NULL, must be valid email format)
-        emailAddress: {
+        email: {
             type: DataTypes.STRING,
             unique: true,
             validate: {
@@ -55,18 +57,19 @@ module.exports = function(sequelize, DataTypes) {
       location: {
           type: DataTypes.STRING,
           allowNull: false,
-          validate: {
-              is: ["^[a-z]+$", 'i'],
-              len: [1,255]
-          }
+        //   validate: {
+        //       is: ["^[a-z]+$", 'i'],
+        //       len: [1,255]
+        //   }
       },
 
             //user photo. URL only. Need to figure out how to use BLOB.
         photo: {
-            type: DataTypes.BLOB,
-            validate: {
-            isUrl: true
-            }
+            type: DataTypes.STRING,
+            allowNull: true,
+            // validate: {
+            // isUrl: true
+            // }
         },
 
       //times donated
@@ -90,52 +93,8 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  var job = sequelize.define("Job", {
-    //food type, only letters. 
-    foodType: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            is: ["^[a-z]+$", 'i']
-        }
-    },
 
-    //quantity of food to donate
-    donateQuantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
 
-    //food expiration
-    foodExpire: {
-       type: DataTypes.STRING,
-       deadline: DataTypes.DATE,
-       validate: {
-           isDate: true 
-       }
-    },
-
-    //pick up location
-    pickupLocation: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            is: ["^[a-z]+$", 'i']
-        }
-    },
-
-    //pick up time
-    pickupTime: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-
-    price: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    }
-
-  });
 
 
   User.prototype.validPassword = function(password) {
@@ -144,10 +103,10 @@ module.exports = function(sequelize, DataTypes) {
   // Hooks are automatic methods that run during various phases of the User Model lifecycle
   // In this case, before a User is created, we will automatically hash their password
   User.addHook("beforeCreate", function(user) {
-    User.password = bcrypt.hashSync(Unoser.password, bcrypt.genSaltSync(10), null);
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
-  return User;
-  return job;
-  //return User;
+  return (User);
+  
+
 };
 
