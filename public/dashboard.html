@@ -86,38 +86,107 @@
         </div>
         <!--Dashboard Content Row-->
         <div class="row">
-                <div class="col-md-3"></div>
-
-                <!--Donate-->
-                <div class="col-md-8 hide-content grab-donate" id="dashboard-content">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Food Type</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Apples">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Quantity</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="24">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Estimated Expiration</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="12/13/2019">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Location</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="1775 Main Street Denver CO">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Comments</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                    </form>
+            <div class="col-md-3"></div>
+            <!-- ==== Dashboard Landing Content ==== -->
+            <div class="col-md-8 grab-landing" id="dashboard-content">
+                <h1 class="user-name">Hello Jeffrey</h1>
+                <h3 class="profile-headers">Your Donations:</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="donations-table">
+                        <tr>
+                            <td>12/13/2018</td>
+                            <td>Apples</td>
+                            <td>36</td>
+                            <td>Complete</td>
+                        </tr>
+                        <tr>
+                            <td>2/26/2019</td>
+                            <td>Canned Goods</td>
+                            <td>12</td>
+                            <td>In Progress</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 class="profile-headers">Your Jobs:</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Donated By</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="jobs-table">
+                        <tr>
+                            <td>12/13/2018</td>
+                            <td>Jane Doe</td>
+                            <td>1775 Main St Denver, CO</td>
+                            <td>Complete</td>
+                        </tr>
+                        <tr>
+                            <td>2/26/2019</td>
+                            <td>John Doe</td>
+                            <td>468 E Colfax Denver, CO</td>
+                            <td>In Progress</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- ==== Donate submission ==== -->
+            <div class="col-md-8 hide-content grab-donate" id="dashboard-content">
+                <!--Donation Form-->
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Food Type</label>
+                        <input type="text" class="form-control food-type" id="exampleFormControlInput1"
+                            placeholder="Apples">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Quantity</label>
+                        <input type="text" class="form-control food-quantity" id="exampleFormControlInput1"
+                            placeholder="24">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Estimated Expiration</label>
+                        <input type="text" class="form-control food-exp" id="exampleFormControlInput1"
+                            placeholder="12/13/2019">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Location</label>
+                        <input type="text" class="form-control food-location" id="exampleFormControlInput1"
+                            placeholder="1775 Main Street Denver CO">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Comments</label>
+                        <textarea class="form-control food-comments" id="exampleFormControlTextarea1"
+                            rows="3"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success" id="form-donate-submit">Submit</button>
+                </form>
+                <!--Modal Submit-->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="modal-text"></div>
+                    </div>
                 </div>
-                <div class="col-md-1"></div>
+            </div>
+            <!-- ==== Donation Confirmation column that appears on submissiont of a donation ====-->
+            <div class="col-md-8 hide-content donation-confirmation text-center" id="dashboard-content">
+                <h1 class="confirm-message text-center">Thank You For Your Donation!</h1>
+                <h1 class="confirm-message text-center">Your Job Has Been Posted!</h1>
+                <a class="profile-return" href="/dashboard">Back To Profile</a>
+            </div>
+            <div class="col-md-1"></div>
         </div>
     </div>
 </body>
