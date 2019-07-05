@@ -19,9 +19,10 @@ $("#form-donate-submit").on("click", function(e) {
   var donateData = [
     {
       foodType: $(".food-type").val().trim(),
-      foodQuantity: $(".food-quantity").val().trim(),
-      foodExpiration: $(".food-exp").val().trim(),
-      foodLocation: $(".food-location").val().trim(),
+      donateQuantity: $(".food-quantity").val().trim(),
+      foodExpire: $(".food-exp").val().trim(),
+      pickupLocation: $(".food-location").val().trim(),
+      pickupTime: $(".pick-up-time").val().trim(),
       foodComments: $(".food-comments").val().trim()
     }
   ];
@@ -53,32 +54,39 @@ function modalRender(donateData) {
   modalDiv.append(br2);
 
   var quantity = $("<h3>");
-  quantity.html("Food Quantity: " + donateData[0].foodQuantity);
+  quantity.html("Food Quantity: " + donateData[0].donateQuantity);
   modalDiv.append(quantity);
 
   var br3 = $("<br>");
   modalDiv.append(br3);
 
   var expiration = $("<h3>");
-  expiration.html("Food Expiration: " + donateData[0].foodExpiration);
+  expiration.html("Food Expiration: " + donateData[0].foodExpire);
   modalDiv.append(expiration);
 
   var br4 = $("<br>");
   modalDiv.append(br4);
 
   var location = $("<h3>");
-  location.html("Food Location: " + donateData[0].foodLocation);
+  location.html("Food Location: " + donateData[0].pickupLocation);
   modalDiv.append(location);
 
   var br5 = $("<br>");
   modalDiv.append(br5);
 
+  var time = $("<h3>");
+  time.html("Pick Up Time: " + donateData[0].pickupTime);
+  modalDiv.append(time);
+
+  var br6 = $("<br>");
+  modalDiv.append(br6);
+
   var comments = $("<h3>");
   comments.html("Food Comments: " + donateData[0].foodComments);
   modalDiv.append(comments);
 
-  var br6 = $("<br>");
-  modalDiv.append(br6);
+  var br7 = $("<br>");
+  modalDiv.append(br7);
 
   var submit = $("<button>");
   submit.addClass("btn btn-success");
