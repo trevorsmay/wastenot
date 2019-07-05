@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Jessejames1!",
-    "database": "exampledb",
+    "password": "Je",
+    "database": "food_Solutions_Db;",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Jessejames1!",
+    "password": null,
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
