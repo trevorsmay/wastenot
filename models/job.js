@@ -28,9 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         pickupLocation: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                is: ["^[a-z]+$", 'i']
-            }
+            
         },
     
         //pick up time
@@ -42,7 +40,11 @@ module.exports = function(sequelize, DataTypes) {
         price: {
             type: DataTypes.STRING,
             allowNull: true,
-        }
+        },
+        // status: {
+        //     type:DataTypes.BOOLEAN,
+
+        // }
     
       });
     
