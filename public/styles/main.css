@@ -1,0 +1,117 @@
+html,body {
+    height: 100%;
+}
+
+body.my-login-page {
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url(../assets/brooke-lark-08bOYnH_r_E-unsplash.jpg);
+    background-size: cover;
+}
+
+
+.hide{
+    display: none;
+}
+
+.my-login-page .card-wrapper {
+    width: 400px;
+    margin: 70px;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+    padding: 10px;
+    
+}
+
+.my-login-page .card .card-title {
+	margin-bottom: 30px;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 12px 10px;
+}
+.footer-main-div{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    background: grey;
+    padding: 20px 0px;
+    opacity: .9;
+    overflow: hidden;
+}
+.footer-social-icons{
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+.footer-social-icons ul{
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+}
+.footer-social-icons ul li{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    margin: 0px 10px;
+    border-radius: 100%;
+    background: white;
+}
+.footer-social-icons ul li a{
+    font-size: 35px;
+    display: block;
+}
+.footer-social-icons ul li a i{
+    line-height: 50px;
+}
+.footer-menu-one{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+}
+.footer-menu-one ul{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+.footer-menu-one ul li{
+    display: inline-block;
+    margin: 0px 15px;
+}
+.footer-menu-one ul li a{
+    font-family: arial;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+} 
+@media screen and (max-width: 425px) {
+	.my-login-page .card-wrapper {
+		width: 90%;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.my-login-page .card.fat {
+		padding: 0;
+	}
+
+	.my-login-page .card.fat .card-body {
+		padding: 15px;
+	}
+}

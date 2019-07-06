@@ -23,7 +23,8 @@ var API = {
         "content-type": "application/json"
       },
       type: "POST",
-      url: "/api/addJob"
+      url: "/api/addJob",
+      data: JSON.stringify(job)
     })
   },
   getAllUserData: function () {
@@ -73,7 +74,7 @@ $("#register").on("click", function (e) {
 console.log("something")
   var firstName = $("#firstName").val();
   var lastName = $("#lastName").val();
-  var companyName = $("#comapnyName").val();
+  var companyName = ("Jims");
   var phoneNumber = $("#phoneNumber").val();
   var email = $("#email").val();
   var password = $("#password").val();
@@ -83,7 +84,7 @@ console.log("something")
   var timesVolunteered = 0;
   var moneyEarned = 0;
   var itemsSold = 0;
-  var newUser = {
+  var newUser =[ {
     firstName,
     lastName,
     companyName,
@@ -97,18 +98,16 @@ console.log("something")
     moneyEarned,
     itemsSold,
     
-  }
-  $.ajax({
-    type: "POST",
-    url: "/api/register",
-    data: JSON.stringify(newUser)
-  });
+  }];
   
-  API.registerUser(newUser).then(function (data){
-    console.log("APi hit");
-    console.log(data);
-    refreshExamples();
-  })
+  console.log(newUser[0]);
+  
+ 
+
+  $.post("/api/register", newUser[0], function() {
+    
+    console.log("Test1");
+})
 });
 
 var refreshExamples = function(){
@@ -178,6 +177,8 @@ var handleDeleteBtnClick = function () {
     refreshExamples();
   });
 };
+
+
 
 
 
@@ -278,4 +279,135 @@ function geolocate(event) {
 
     });
   }
+}
+
+//Populate Donate content function 
+$("#donate-btn").on("click", function() {
+  $(".grab-landing").addClass("hide-content");
+  $(".grab-donate").removeClass("hide-content");
+  $(".donation-confirmation").addClass("hide-content");
+});
+
+//Grab Donation values on donate form submit
+$("#form-donate-submit").on("click", function(e) {
+  e.preventDefault();
+
+  var donateData = [
+    {
+      foodType: $(".food-type").val().trim(),
+      donateQuantity: $(".food-quantity").val().trim(),
+      foodExpire: $(".food-exp").val().trim(),
+      pickupLocation: $(".food-location").val().trim(),
+      pickupTime: $(".pick-up-time").val().trim()
+      // foodComments: $(".food-comments").val().trim()
+    }
+  ];
+
+  modalRender(donateData);
+});
+
+//Render Modal For final submission function
+function modalRender(donateData) {
+
+  var modal = document.getElementById("myModal");
+  var span = document.getElementsByClassName("close")[0];
+
+  modal.style.display = "block";
+
+  var modalDiv = $("<div>");
+  var modalTitle = $("<h1>");
+  modalTitle.html("Are You Sure You Want To Submit This Donation?");
+  modalDiv.append(modalTitle);
+
+  var br1 = $("<br>");
+  modalDiv.append(br1);
+
+  var type = $("<h3>");
+  type.html("Food Type: " + donateData[0].foodType);
+  modalDiv.append(type);
+
+  var br2 = $("<br>");
+  modalDiv.append(br2);
+
+  var quantity = $("<h3>");
+  quantity.html("Food Quantity: " + donateData[0].donateQuantity);
+  modalDiv.append(quantity);
+
+  var br3 = $("<br>");
+  modalDiv.append(br3);
+
+  var expiration = $("<h3>");
+  expiration.html("Food Expiration: " + donateData[0].foodExpire);
+  modalDiv.append(expiration);
+
+  var br4 = $("<br>");
+  modalDiv.append(br4);
+
+  var location = $("<h3>");
+  location.html("Food Location: " + donateData[0].pickupLocation);
+  modalDiv.append(location);
+
+  var br5 = $("<br>");
+  modalDiv.append(br5);
+
+  var time = $("<h3>");
+  time.html("Pick Up Time: " + donateData[0].pickupTime);
+  modalDiv.append(time);
+
+  var br6 = $("<br>");
+  modalDiv.append(br6);
+
+  var comments = $("<h3>");
+  comments.html("Food Comments: " + donateData[0].foodComments);
+  modalDiv.append(comments);
+
+  var br7 = $("<br>");
+  modalDiv.append(br7);
+
+  var submit = $("<button>");
+  submit.addClass("btn btn-success");
+  submit.attr("type", "submit");
+  submit.attr("id", "store-donation");
+  submit.text("Submit");
+  modalDiv.append(submit);
+
+  $(".modal-text").html(modalDiv);
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  $("#store-donation").on("click", function(e) {
+    e.preventDefault();
+    
+    storeDonation(donateData);
+
+    modal.style.display = "none";
+
+    $(".food-type").val("");
+    $(".food-quantity").val("");
+    $(".food-exp").val("");
+    $(".food-location").val("");
+    $(".food-comments").val("");
+  });
+}
+// everything coming in on the form.
+
+
+function storeDonation(donateData) {
+  donateData = JSON.stringify(donateData[0]);
+  API.postJob(donateData).then(function(data){
+    console.log(data);
+  })
+
+  $(".grab-donate").addClass("hide-content");
+  $(".donation-confirmation").removeClass("hide-content");
+
+  
 }
