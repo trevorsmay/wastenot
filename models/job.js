@@ -4,14 +4,14 @@ module.exports = function(sequelize, DataTypes) {
         foodType: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                is: ["^[a-z]+$", 'i']
-            }
+            // validate: {
+            //     is: ["^[a-z]+$", 'i']
+            // }
         },
     
         //quantity of food to donate
         donateQuantity: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
     
@@ -37,14 +37,14 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
     
-        price: {
+        foodComments: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        // status: {
-        //     type:DataTypes.BOOLEAN,
-
-        // }
+        status: {
+            type:DataTypes.BOOLEAN,
+            allowNull: true
+        }
     
       });
     
