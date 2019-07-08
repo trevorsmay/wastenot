@@ -50,38 +50,46 @@ module.exports = function (app) {
   };
 
   app.post("/api/register", function(req, res){
-      console.log("Hello");
+      console.log("Hello I am the register api ");
       db.User.create(req.body).then(function(User){
           res.json(User);
       })
+      .then(function(){
+        res.redirect(307, "/api/login");
+      })
+      .catch(function(err){
+        res.status(401).json(err);
+      })
+     
   })
 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
+    console.log("I am the user login api")
+    res.json(req.User);
   });
 
-  app.get("/api/user_data", function (req, res) {
-    if (!req.user) {
-      res.json({});
-    } else {
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      })
-    }
+  app.post("/api/signup", function(req, res) {
+    console.log(req.body.email, req.body.password);
+    console.log(req.body);
+    db.User.create(
+      req.body
+    ).then(function(User){
+      res.json(User);
   })
-
-  app.get("/api/getJobsWhere", function(req,res){
-      db.job.findAll(
-          {where:{status: false}},
-      ).then(function(result){
-        res.json(result)
+      .then(function() {
+        
+        console.log("I am the redirect on the signup api")
+        res.redirect(307, "/api/login");
+        
       })
-  })
-
+      .catch(function(err) {
+        res.status(401).json(err);
+        console.log("uh oh I am the catch on the signup api")
+      });
+  });
 
   // this update will logout the user by updating a status element in the database.
   app.get("/logout", function (req, res) {
@@ -89,6 +97,31 @@ module.exports = function (app) {
     res.redirect("/");
   })
 
+
+  app.get("/api/user_data", function (req, res) {
+    console.log("hello I am the user_data api ");
+    if (!req.user) {
+      res.json({});
+      console.log("the catch on the user_Data APi")
+    } else {
+     
+      res.json({
+        email: req.user.email,
+        id: req.user.id
+      })
+    }
+  })
+
+//   app.get("/api/getJobsWhere", function(req,res){
+//       db.job.findAll(
+//           {where:{status: false}},
+//       ).then(function(result){
+//         res.json(result)
+//       })
+//   })
+
+
+  
 
 // this is a call to update the job posting
 // you must pass in the whole job object because it rewrites the row everytime

@@ -4,6 +4,7 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 var place;
+var firstName, lastName;
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -68,8 +69,12 @@ var API = {
 };
 
 
+
+
 var newUser;
 $("#register").on("click", function (e) {
+
+ 
  e.preventDefault();
 console.log("something")
   var firstName = $("#firstName").val();
@@ -100,85 +105,59 @@ console.log("something")
     
   }];
   
-  console.log(newUser[0]);
   
  
 
-  $.post("/api/register", newUser[0], function() {
+  $.post("/api/signup", newUser[0], function() {
+   window.location.pathname = "/dashboard";
     
-    console.log("Test1");
 })
+
 });
+
+
 
 var refreshExamples = function(){
   console.log("refresh Examples");
 }
 
-// refreshExamples gets new examples from the db and repopulates the list
-var postJobs = function () {
-  API.getAllJobs().then(function (data) {
-    var $jobs = data.map(function (example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+$("#sign-in").on("click", function(e){
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+  e.preventDefault();
+  var emailInput =  $("#email");
+  var passwordInput =  $("#password");
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+  var userData = {
+    email: emailInput.val().trim(),
+    password: passwordInput.val().trim()
+  }
+  console.log("I work");
 
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($jobs);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function (event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!userData.email|| !userData.password){
     return;
   }
+ 
+  loginUser(userData.email, userData.password);
+  emailInput.val("");
+  passwordInput.val("");
 
-  API.saveExample(example).then(function () {
-    refreshExamples();
-  });
+})
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function () {
-    refreshExamples();
-  });
-};
-
-
+function loginUser(email, password) {
+  console.log(email, password);
+  $.post("/api/login", {
+    email: email,
+    password: password
+  })
+    .then(function() {
+      console.log("I was hit");
+      window.location.replace("/dashboard");
+      // If there's an error, log the error
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+}
 
 
 
@@ -411,3 +390,5 @@ function storeDonation(donateData) {
 
   
 }
+
+
