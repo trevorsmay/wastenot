@@ -1,127 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/styles2.css">
-
-    <title>Food Solutions</title>
-
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>User Register - Food Solutions</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
+<body class="my-login-page">
+        <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="/">
+                    <img src="./images/logo.jpg" width="160" height="80" class="d-inline-block align-top" alt="">
+                </a>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active login-btn" href="./login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link register-btn" href="./registration.html">Register</a>
+                    </li>
+                </ul>
+            </nav>
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Register</h4>
+							<form method="POST" class="my-login-validation" novalidate="">
+								<div class="form-group">
+									<label for="name">First Name</label>
+									<input id="firstName" type="text" class="form-control" name="name" required autofocus>
+									<div class="invalid-feedback">
+										What's your name?
+									</div>
+                                </div>
+                                <div class="form-group">
+									<label for="lastName">Last Name</label>
+									<input id="lastName" type="text" class="form-control" name="name" required autofocus>
+									<div class="invalid-feedback">
+										What's your name?
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="mail">Mailing Address</label>
+									<input  id="autocomplete" type="text" onFocus="geolocate()" class="form-control" name="address" >
+									<div class="invalid-feedback">
+										Your address is invalid
+									</div>
+								</div>
 
-<body>
+								<div class="form-group">
+									<label for="email">E-Mail Address</label>
+									<input id="email" type="email" class="form-control" name="email" required>
+									<div class="invalid-feedback">
+										Your email is invalid
+									</div>
+								</div>
 
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="/">
-            <img src="./images/logo.jpg" width="160" height="80" class="d-inline-block align-top" alt="">
-        </a>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active login-btn" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link register-btn" href="/register">Register</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="container">
+								
+								
 
-        <div class="row">
-            <div class="col-md-8 ">
-                <h1 class="text-left">Food Solutions Registration</h1>
-                <p class="text-left">It is a long established fact that a reader will be distracted by the readable
-                    content
-                    of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                    normal distribution of letters, as opposed to using 'Content here, content here', making it look
-                    like
-                    readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                    default model text, and a search for 'lorem ipsum' will uncover many web sites still in their
-                    infancy.
-                    Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected
-                    humour and the like).</p>
-            </div>
-            <br>
-            <br>
-            <div class="col-md-6">
-                <form>
-                    <div class="form-row ">
-                        <div class="form-group col-md-6">
-                            <label for="inputFirst Name">First Name</label>
-                            <input type="first name" class="form-control" id="firstName" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputLastName">Last Name</label>
-                            <input type="last name" class="form-control" id="lastName" placeholder="Last Name">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
-                        </div>
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input id="password" type="password" class="form-control" name="password" required data-eye>
+									<div class="invalid-feedback">
+										Password is required
+									</div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn-primary">Upload a Picture</button>
+                                </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div>
-                        <label >Address</label>
-                        <input class="form-control" id="autocomplete" class="address" 
-                            placeholder="Business Location" onFocus= "geolocate()"   
-                            class="validate recipient-address-input">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="city">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="photo">
-                        </div>
-                    </div>
-                    <div>
-                        
-                        <button id="register" type="button" class="btn btn-secondary btn-md"><a href = "/dashboard">Register </a></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+								<div class="form-group">
+									<div class="custom-checkbox custom-control">
+										<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+										<label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+										<div class="invalid-feedback">
+											You must agree with our Terms and Conditions
+										</div>
+									</div>
+								</div>
 
+								<div class="form-group m-0">
+                                   
+                             
+                               
+								</div>
+								<div class="mt-4 text-center">
+									Already have an account? <a href="./login.html">Login</a>
+								</div>
+                            </form>
+                            
+                        <a href="/dashboard">
+                            <button  type="button" class="btn btn-primary btn-block " id="register">
+                                   
+                
+                                Register
+                            
+                            </button>
+                        </a>
+                        <!-- <a href="/dashboard">
+                            <button  type="button" class="btn btn-primary btn-block" id="register">
+                                   
+                
+                                Register
+                            
+                            </button>
+                        </a> -->
+                       
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMACMs-Hb-pK74S2hYLhsnapumThklgBY&libraries=places&callback=initAutocomplete">
+</script>
+    <!-- <script src="./js/login.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <script src="js/index.js"></script>
+	<script src="js/index.js"></script>
+	<script type = "text/javascript" src="./js/dashboard2.js"></script>
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMACMs-Hb-pK74S2hYLhsnapumThklgBY&libraries=places&callback=initAutocomplete">
-    </script>
 </body>
-
+<div class="footer-main-div">
+		<div class="footer-social-icons">
+			<ul>
+				<li><a href="#" target="_blank" class="icon-facebook"><i class="fab fa-facebook-f"></i> </a></li>
+				<li><a href="#" target="_blank" class="icon-twitter"><i class="fab fa-twitter"></i></a></li>
+				<li><a href="#" target="_blank" class="icon-google_plus"><i class="fab fa-google-plus-g"></i></a></li>
+				<li> <a href="#" target="_blank" class="icon-instagram"><i class="fab fa-instagram"></i></a></li>
+	
+			</ul>
+		</div>
+	<div class ="footer-menu-one">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Movement</a></li>
+			<li><a href="#">Contact Us</a></li>
+		</ul>
+	</div>
 </html>

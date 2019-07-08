@@ -34,7 +34,9 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
             len: [10,11],
             isNumeric: true
-                }
+                },
+            allowNull: true,
+            defaultValue: null
             },
 
 

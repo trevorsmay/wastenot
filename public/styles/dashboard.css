@@ -9,11 +9,12 @@
   .dashboardNav {
     padding: 30px;
     border-bottom: 1px solid black;
-    background-color:green;
+    background-color:rgb(151, 233, 151);
+
   }
   
   .dashboard-a:hover {
-    background-color:gold;
+    background-color:rgb(151, 233, 151);
   
   }
   

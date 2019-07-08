@@ -40,6 +40,7 @@ module.exports = function(sequelize, DataTypes) {
         foodComments: {
             type: DataTypes.STRING,
             allowNull: true,
+            defaultValue: null,
         },
         status: {
             type:DataTypes.BOOLEAN,

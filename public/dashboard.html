@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +18,6 @@
     <!-- Google font for heading -->
     <link href="https://fonts.googleapis.com/css?family=Oswald:700" rel="stylesheet">
 </head>
-
 <body>
     <div class="container-fluid">
         <!--Nav Bar Div-->
@@ -39,7 +37,7 @@
             <!--Profile Name-->
             <div class="row">
                 <div class="col-md-3"></div>
-                <h1 class="col-md-4" id="sidebarName">Jeffrey Westcott</h1>
+                <h1 class="col-md-4" id="sidebarName"></h1>
                 <div class="col-md-4"></div>
             </div>
             <!--Side Bar Menu-->
@@ -79,10 +77,10 @@
         <div class="row dashboardNav">
             <div class="col-md-2"></div>
             <div class="col-md-5 text-center">
-                <button class="dashboard-a dash-font" id="donate-btn">Donate</button>
+                <button class="dashboard-a btn btn-primary" id="donate-btn">Donate</button>
             </div>
             <div class="col-md-5 text-center">
-                <button class="dashboard-a dash-font" id="volunteer-btn">Volunteer</button>
+                <button class="dashboard-a btn btn-primary" id="volunteer-btn">Volunteer</button>
             </div>
         </div>
         <!--Dashboard Content Row-->
@@ -90,9 +88,11 @@
             <div class="col-md-3"></div>
             <!-- ==== Dashboard Landing Content ==== -->
             <div class="col-md-8 grab-landing" id="dashboard-content">
-                <h1 class="user-name pb-5 dash-font">Hello Jeffrey</h1>
-                <h3 class="profile-headers pb-3 dash-font">Your Donations:</h3>
-                <table class="table pb-3 dash-font">
+                <h1 class="user-name"></h1>
+                <p class="contactInfo"></p>
+                <p class="mailingAddress"></p>
+                <h3 class="profile-headers">Your Donations:</h3>
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Job Id</th>
@@ -151,8 +151,8 @@
                             placeholder="12/13/2019">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1 dash-font">Location</label>
-                        <input type="text" class="form-control food-location" id="exampleFormControlInput1"
+                        <label for="exampleFormControlInput1">Location</label>
+                        <input type="text" class="form-control food-location" id="autocomplete" onFocus="geolocate()"
                             placeholder="1775 Main Street Denver CO">
                     </div>
                     <div class="form-group">
@@ -224,11 +224,21 @@
     crossorigin="anonymous"></script>
 <!--Anime JS Link-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMACMs-Hb-pK74S2hYLhsnapumThklgBY&libraries=places&callback=initAutocomplete">
+</script>
 <!--Style JS Link=-->
 <script type="text/javascript" src="./js/style.js"></script>
 <!--Index JS Link-->
 <script type="text/javascript" src="./js/index.js"></script>
+<script type="text/javascript" src ="./js/dashboard2.js"></script>
 <!--Dashboard JS Link-->
 <script type="text/javascript" src="./js/dashboard.js"></script>
 
-</html>
+<script>
+$( document ).ready(function() {
+    console.log( "ready!" );
+    
+});
+</script>
+ </html>

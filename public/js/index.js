@@ -1,19 +1,19 @@
 
-=======
 // Get references to page elements
 // var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 var place;
+var firstName, lastName;
 
 // The API object contains methods for each kind of request we'll make
 var API = {
   registerUser: function (user_data) {
     return $.ajax({
       type: "POST",
-      url: "/api/register",
-      data: JSON.stringify(user_data)
+      url: "/api/signup",
+      
     });
   },
   postJob: function (job) {
@@ -22,7 +22,8 @@ var API = {
         "content-type": "application/json"
       },
       type: "POST",
-      url: "/api/addJob"
+      url: "/api/addJob",
+      data: JSON.stringify(job)
     })
   },
   getAllUserData: function () {
@@ -66,20 +67,22 @@ var API = {
 };
 
 
+
+
 var newUser;
 $("#register").on("click", function (e) {
  e.preventDefault();
-  } 
-};
+  })
 
 
-var newUSer;
+
 $("#register").on("click", function (e) {
  
 console.log("something")
+
   var firstName = $("#firstName").val();
   var lastName = $("#lastName").val();
-  var companyName = $("#comapnyName").val();
+  var companyName = ("Jims");
   var phoneNumber = $("#phoneNumber").val();
   var email = $("#email").val();
   var password = $("#password").val();
@@ -89,7 +92,7 @@ console.log("something")
   var timesVolunteered = 0;
   var moneyEarned = 0;
   var itemsSold = 0;
-  var newUser = {
+  var newUser =[ {
     firstName,
     lastName,
     companyName,
@@ -103,128 +106,65 @@ console.log("something")
     moneyEarned,
     itemsSold,
     
-  }
-  $.ajax({
-    type: "POST",
-    url: "/api/register",
-    data: JSON.stringify(newUser)
-  });
+  }];
   
-  API.registerUser(newUser).then(function (data){
-    console.log("APi hit");
-    console.log(data);
-    refreshExamples();
-  })
+  
+//  API.registerUser(newUser[0]).then(function(user){
+//     console.log(user+ "the registerUSer call ");
+//     window.location.pathname="/dashboard"
+//  })
+
+  $.post("/api/signup", newUser[0], function() {
+   window.location.pathname = "/dashboard";
+    
+})
+
 });
+
+
 
 var refreshExamples = function(){
   console.log("refresh Examples");
 }
 
-// refreshExamples gets new examples from the db and repopulates the list
-var postJobs = function () {
-  API.getAllJobs().then(function (data) {
-    var $jobs = data.map(function (example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+// $("#sign-in").on("click", function(e){
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+//   e.preventDefault();
+//   var emailInput =  $("#email");
+//   var passwordInput =  $("#password");
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+//   var userData = {
+//     email: emailInput.val().trim(),
+//     password: passwordInput.val().trim()
+//   }
+//   console.log("I work");
 
-      $li.append($button);
+//   if (!userData.email|| !userData.password){
+//     return;
+//   }
+ 
+//   loginUser(userData.email, userData.password);
+//   emailInput.val("");
+//   passwordInput.val("");
 
-      return $li;
-    });
+// })
 
-    $exampleList.empty();
-    $exampleList.append($jobs);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function (event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function () {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function () {
-    refreshExamples();
-  });
-  
-  console.log(newUser);
-
-  
-  API.registerUser(NewUser).then(function (data){
-    console.log(data);
-    refreshExamples();
+function loginUser(email, password) {
+  console.log(email, password);
+  $.post("/api/login", {
+    email: email,
+    password: password
   })
-});
-
-var refreshExamples = function(){
-  console.log("refresh Examples");
+    .then(function() {
+      console.log("I was hit");
+      window.location.replace("/dashboard");
+      // If there's an error, log the error
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 }
 
-// refreshExamples gets new examples from the db and repopulates the list
-var postJobs = function () {
-  API.getAllJobs().then(function (data) {
-    var $jobs = data.map(function (example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($jobs);
-  });
-};
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
@@ -350,20 +290,20 @@ function fillInAddress() {
   // var place2 = autocomplete2.getPlace();
 
 
-  for (var component in componentForm) {
-    document.getElementById(component).value = '';
-    document.getElementById(component).disabled = false;
-  }
+  // for (var component in componentForm) {
+  //   document.getElementById(component).value = '';
+  //   document.getElementById(component).disabled = false;
+  // }
 
   // Get each component of the address from the place details,
   // and then fill-in the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      document.getElementById(addressType).value = val;
-    }
-  }
+  // for (var i = 0; i < place.address_components.length; i++) {
+  //   var addressType = place.address_components[i].types[0];
+  //   if (componentForm[addressType]) {
+  //     var val = place.address_components[i][componentForm[addressType]];
+  //     document.getElementById(addressType).value = val;
+  //   }
+  // }
 
 }
 
