@@ -27,20 +27,23 @@ module.exports = function (app) {
 
   module.exports = function(app) {
     // Get all examples
-    app.get("/api/findjobs", function(req, res) {
-      db.job.findAll({}).then(function(dbExamples) {
-        res.json(dbExamples);
-      });
-    });
-  
-    // Create a new example
-    app.post("/api/donate", function(req, res) {
-      console.log(req.body);
-      db.job.create(req.body).then(function(dbExample) {
-        res.json(dbExample);
-      });
-    });
-  
+   
+    
+
+app.get("/api/findjobs", function(req, res) {
+  db.job.findAll({}).then(function(dbExamples) {
+    res.json(dbExamples);
+  });
+});
+
+// Create a new example
+app.post("/api/donate", function(req, res) {
+  console.log(req.body);
+  db.job.create(req.body).then(function(dbExample) {
+    res.json(dbExample);
+  });
+});
+
     // Delete an example by id
     app.delete("/api/examples/:id", function(req, res) {
       db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
@@ -62,7 +65,7 @@ module.exports = function (app) {
       })
      
   })
-
+ 
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -72,7 +75,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/signup", function(req, res) {
-    console.log(req.body.email, req.body.password);
+    console.log(req.body.email, req.body.password ,"this should be the email and password");
     console.log(req.body);
     db.User.create(
       req.body
@@ -99,7 +102,7 @@ module.exports = function (app) {
 
 
   app.get("/api/user_data", function (req, res) {
-    console.log("hello I am the user_data api ");
+    console.log(req.user + "this is the req.user");
     if (!req.user) {
       res.json({});
       console.log("the catch on the user_Data APi")
@@ -111,17 +114,6 @@ module.exports = function (app) {
       })
     }
   })
-
-//   app.get("/api/getJobsWhere", function(req,res){
-//       db.job.findAll(
-//           {where:{status: false}},
-//       ).then(function(result){
-//         res.json(result)
-//       })
-//   })
-
-
-  
 
 // this is a call to update the job posting
 // you must pass in the whole job object because it rewrites the row everytime
@@ -209,5 +201,50 @@ module.exports = function (app) {
       }
     }).then( (result) => res.json(result) )
   );
+  // Delete an example by id
+app.delete("/api/complete/:id", function(req, res) {
+  db.job.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+    res.json(dbExample);
+  });
+});
+
+app.put("/api/select/:id", function(req, res) {
+  console.log(req.body.true);
+  db.job.update(
+    {status: req.body.true},
+    {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function(dbPost) {
+      res.json(dbPost);
+    });
+});
+app.get("/api/getUser/:email", function(req, res){
+  db.User.findAll(
+    {where:{email: req.params.email}}
+  ).then(function(result){
+    res.json(result);
+  })
+})
+app.get("/api/getJobsWhere", function(req,res){
+    db.job.findAll(
+      {where:{status: true}},
+    ).then(function(result){
+      res.json(result)
+    })
+});
+
+app.get("/api/findJobsWhere", function(req,res){
+  db.job.findAll(
+    {where:{status: false}},
+  ).then(function(result){
+    res.json(result)
+  })
+});
 
 };
+
+
+

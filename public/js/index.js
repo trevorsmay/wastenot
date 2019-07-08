@@ -14,8 +14,8 @@ var API = {
         "object": "application/json"
       },
       type: "POST",
-      url: "/api/register",
-      data: JSON.stringify(user_data)
+      url: "/api/signup",
+      
     });
   },
   postJob: function (job) {
@@ -73,10 +73,9 @@ var API = {
 
 var newUser;
 $("#register").on("click", function (e) {
-
- 
  e.preventDefault();
 console.log("something")
+
   var firstName = $("#firstName").val();
   var lastName = $("#lastName").val();
   var companyName = ("Jims");
@@ -106,7 +105,10 @@ console.log("something")
   }];
   
   
- 
+//  API.registerUser(newUser[0]).then(function(user){
+//     console.log(user+ "the registerUSer call ");
+//     window.location.pathname="/dashboard"
+//  })
 
   $.post("/api/signup", newUser[0], function() {
    window.location.pathname = "/dashboard";
@@ -121,27 +123,27 @@ var refreshExamples = function(){
   console.log("refresh Examples");
 }
 
-$("#sign-in").on("click", function(e){
+// $("#sign-in").on("click", function(e){
 
-  e.preventDefault();
-  var emailInput =  $("#email");
-  var passwordInput =  $("#password");
+//   e.preventDefault();
+//   var emailInput =  $("#email");
+//   var passwordInput =  $("#password");
 
-  var userData = {
-    email: emailInput.val().trim(),
-    password: passwordInput.val().trim()
-  }
-  console.log("I work");
+//   var userData = {
+//     email: emailInput.val().trim(),
+//     password: passwordInput.val().trim()
+//   }
+//   console.log("I work");
 
-  if (!userData.email|| !userData.password){
-    return;
-  }
+//   if (!userData.email|| !userData.password){
+//     return;
+//   }
  
-  loginUser(userData.email, userData.password);
-  emailInput.val("");
-  passwordInput.val("");
+//   loginUser(userData.email, userData.password);
+//   emailInput.val("");
+//   passwordInput.val("");
 
-})
+// })
 
 function loginUser(email, password) {
   console.log(email, password);
@@ -216,20 +218,20 @@ function fillInAddress() {
   // var place2 = autocomplete2.getPlace();
 
 
-  for (var component in componentForm) {
-    document.getElementById(component).value = '';
-    document.getElementById(component).disabled = false;
-  }
+  // for (var component in componentForm) {
+  //   document.getElementById(component).value = '';
+  //   document.getElementById(component).disabled = false;
+  // }
 
   // Get each component of the address from the place details,
   // and then fill-in the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      document.getElementById(addressType).value = val;
-    }
-  }
+  // for (var i = 0; i < place.address_components.length; i++) {
+  //   var addressType = place.address_components[i].types[0];
+  //   if (componentForm[addressType]) {
+  //     var val = place.address_components[i][componentForm[addressType]];
+  //     document.getElementById(addressType).value = val;
+  //   }
+  // }
 
 }
 

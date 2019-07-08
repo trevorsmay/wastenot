@@ -224,11 +224,11 @@
 }
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
-  color: green;
+  color: rgb(151, 233, 151);
 }
 .nav-side-menu ul .sub-menu li.active a,
 .nav-side-menu li .sub-menu li.active a {
-  color: green;
+  color: rgb(151, 233, 151);
 }
 .nav-side-menu ul .sub-menu li,
 .nav-side-menu li .sub-menu li {
@@ -336,11 +336,11 @@ body {
 .dashboardNav {
   padding: 30px;
   border-bottom: 1px solid black;
-  background-color:green;
+  background-color: rgb(151, 233, 151);
 }
 
 .dashboard-a:hover {
-  background-color:gold;
+  background-color: rgb(151, 233, 151);
 
 }
 
