@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     
         //quantity of food to donate
         donateQuantity: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
     
@@ -37,15 +37,15 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
     
-        price: {
+        foodComments: {
             type: DataTypes.STRING,
             allowNull: true,
             defaultValue: null,
         },
-        // status: {
-        //     type:DataTypes.BOOLEAN,
-
-        // }
+        status: {
+            type:DataTypes.BOOLEAN,
+            allowNull: true
+        }
     
       });
     

@@ -25,32 +25,13 @@ module.exports = function (app) {
     })
   });
 
-  module.exports = function(app) {
-    // Get all examples
-   
-    
-
-app.get("/api/findjobs", function(req, res) {
-  db.job.findAll({}).then(function(dbExamples) {
-    res.json(dbExamples);
-  });
-});
-
-// Create a new example
-app.post("/api/donate", function(req, res) {
-  console.log(req.body);
-  db.job.create(req.body).then(function(dbExample) {
-    res.json(dbExample);
-  });
-});
-
     // Delete an example by id
     app.delete("/api/examples/:id", function(req, res) {
       db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
         res.json(dbExample);
       });
     });
-  };
+  
 
   app.post("/api/register", function(req, res){
       console.log("Hello I am the register api ");
@@ -202,11 +183,7 @@ app.post("/api/donate", function(req, res) {
     }).then( (result) => res.json(result) )
   );
   // Delete an example by id
-app.delete("/api/complete/:id", function(req, res) {
-  db.job.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-    res.json(dbExample);
-  });
-});
+
 
 app.put("/api/select/:id", function(req, res) {
   console.log(req.body.true);
@@ -228,23 +205,45 @@ app.get("/api/getUser/:email", function(req, res){
     res.json(result);
   })
 })
-app.get("/api/getJobsWhere", function(req,res){
+
+/* eslint-disable prettier/prettier */
+  // Get all examples
+  app.get("/api/findjobs", function(req, res) {
+    db.job.findAll({}).then(function(dbExamples) {
+      res.json(dbExamples);
+    });
+  });
+
+  // Create a new example
+  app.post("/api/donate", function(req, res) {
+    console.log(req.body);
+    db.job.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+  // Delete an example by id
+  app.delete("/api/complete/:id", function(req, res) {
+    db.job.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
+  app.get("/api/getJobsWhere", function(req,res){
+      db.job.findAll(
+        {where:{status: true}},
+      ).then(function(result){
+        res.json(result)
+      })
+  });
+
+  app.get("/api/findJobsWhere", function(req,res){
     db.job.findAll(
-      {where:{status: true}},
+      {where:{status: false}},
     ).then(function(result){
       res.json(result)
     })
 });
 
-app.get("/api/findJobsWhere", function(req,res){
-  db.job.findAll(
-    {where:{status: false}},
-  ).then(function(result){
-    res.json(result)
-  })
-});
 
-};
-
-
-
+}

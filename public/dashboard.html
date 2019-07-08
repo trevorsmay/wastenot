@@ -12,6 +12,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--Custom CSS Link-->
     <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="./styles/dashboard.css">
     <!-- Font awesome for icon -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- Google font for heading -->
@@ -43,12 +44,12 @@
             <div class="menu-list">
                 <ul id="menu-content" class="menu-content collapse out">
                     <li>
-                        <a href="#">
-                            <i class="fa fa-home fa-lg"></i> Dashboard
+                        <a href="/">
+                            <i class="fa fa-home fa-lg"></i> Home
                         </a>
                     </li>
                     <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                        <a href="#"><i class="fa fa-user fa-lg"></i> Profile</a>
+                        <a href="/dashboard"><i class="fa fa-user fa-lg"></i> Profile</a>
                     </li>
                     <li data-toggle="collapse" data-target="#service" class="collapsed">
                         <a href="#"><i class="fa fa-car fa-lg"></i> New </a>
@@ -94,69 +95,58 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Job Id</th>
                             <th scope="col">Date</th>
                             <th scope="col">Item</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Select</th>
                         </tr>
                     </thead>
-                    <tbody class="donations-table">
-                        <tr>
-                            <td>12/13/2018</td>
-                            <td>Apples</td>
-                            <td>36</td>
-                            <td>Complete</td>
-                        </tr>
-                        <tr>
-                            <td>2/26/2019</td>
-                            <td>Canned Goods</td>
-                            <td>12</td>
-                            <td>In Progress</td>
-                        </tr>
+                    <tbody class="donations-table dash-font">
+
                     </tbody>
                 </table>
-                <h3 class="profile-headers">Your Jobs:</h3>
-                <table class="table">
+                <h3 class="profile-headers pb-3 dash-font">Your Jobs:</h3>
+                <table class="table pb-3 dash-font">
                     <thead>
                         <tr>
+                            <th scope="col">Job ID</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Donated By</th>
+                            <th scope="col">Food</th>
+                            <th scope="col">Pick Up Time</th>
                             <th scope="col">Location</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Select</th>
                         </tr>
                     </thead>
-                    <tbody class="jobs-table">
-                        <tr>
-                            <td>12/13/2018</td>
-                            <td>Jane Doe</td>
-                            <td>1775 Main St Denver, CO</td>
-                            <td>Complete</td>
-                        </tr>
-                        <tr>
-                            <td>2/26/2019</td>
-                            <td>John Doe</td>
-                            <td>468 E Colfax Denver, CO</td>
-                            <td>In Progress</td>
-                        </tr>
+                    <tbody class="your-jobs dash-font">
+                        
                     </tbody>
                 </table>
+                <!--Modal Submit-->
+                <div id="myModal2" class="modal2">
+                        <div class="modal-content2">
+                            <span class="close2">&times;</span>
+                            <div class="modal-text2"></div>
+                        </div>
+                    </div>
             </div>
             <!-- ==== Donate submission ==== -->
             <div class="col-md-8 hide-content grab-donate" id="dashboard-content">
                 <!--Donation Form-->
                 <form>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Food Type</label>
+                        <label for="exampleFormControlInput1 dash-font">Food Type</label>
                         <input type="text" class="form-control food-type" id="exampleFormControlInput1"
                             placeholder="Apples">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Quantity</label>
+                        <label for="exampleFormControlInput1 dash-font">Quantity</label>
                         <input type="text" class="form-control food-quantity" id="exampleFormControlInput1"
                             placeholder="24">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Estimated Expiration</label>
+                        <label for="exampleFormControlInput1 dash-font">Estimated Expiration</label>
                         <input type="text" class="form-control food-exp" id="exampleFormControlInput1"
                             placeholder="12/13/2019">
                     </div>
@@ -166,16 +156,16 @@
                             placeholder="1775 Main Street Denver CO">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Pick Up Time</label>
+                        <label for="exampleFormControlInput1 dash-font">Pick Up Time</label>
                         <input type="text" class="form-control pick-up-time" id="exampleFormControlInput1"
                             placeholder="5:30pm">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Comments</label>
+                        <label for="exampleFormControlTextarea1 dash-font">Comments</label>
                         <textarea class="form-control food-comments" id="exampleFormControlTextarea1"
                             rows="3"></textarea>
                     </div>
-                    <button type="button" class="btn btn-success" id="form-donate-submit">Submit</button>
+                    <button type="button" class="btn btn-success dash-font" id="form-donate-submit">Submit</button>
                 </form>
                 <!--Modal Submit-->
                 <div id="myModal" class="modal">
@@ -187,9 +177,43 @@
             </div>
             <!-- ==== Donation Confirmation column that appears on submissiont of a donation ====-->
             <div class="col-md-8 hide-content donation-confirmation text-center" id="dashboard-content">
-                <h1 class="confirm-message text-center">Thank You For Your Donation!</h1>
-                <h1 class="confirm-message text-center">Your Job Has Been Posted!</h1>
-                <a class="profile-return" href="/dashboard">Back To Profile</a>
+                <h1 class="confirm-message text-center dash-font">Thank You For Your Donation!</h1>
+                <h1 class="confirm-message text-center dash-font">Your Job Has Been Posted!</h1>
+                <a class="profile-return dash-font" href="/dashboard">Back To Profile</a>
+            </div>
+            <!-- ==== Your Donation Has Been Deleted-->
+            <div class="col-md-8 hide-content deletion-confirmation text-center" id="dashboard-content">
+                <h1 class="confirm-message text-center dash-font">Your Donation Has Been Deleted!</h1>
+                <a class="profile-return dash-font" href="/dashboard">Back To Profile</a>
+            </div>
+            <!-- ==== You have selected a job-->
+            <div class="col-md-8 hide-content select-confirmation text-center" id="dashboard-content">
+                <h1 class="confirm-message text-center dash-font">You Have Selected This Job!</h1>
+                <a class="profile-return dash-font" href="/dashboard">Back To Profile</a>
+            </div>
+            <!-- ==== You have Completed a job-->
+            <div class="col-md-8 hide-content complete-confirmation text-center" id="dashboard-content">
+                    <h1 class="confirm-message text-center dash-font">You Have Completed This Job!</h1>
+                    <a class="profile-return dash-font" href="/dashboard">Back To Profile</a>
+                </div>
+            <!-- ==== Volunteer Section ==== -->
+            <div class="col-md-8 hide-content grab-volunteer" id="dashboard-content">
+                <h3 class="profile-headers dash-font">Available Jobs:</h3>
+                <table class="table dash-font">
+                    <thead>
+                        <tr>
+                            <th scope="col">Job Id</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Food</th>
+                            <th scope="col">Pick Up Time</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Select</th>
+                        </tr>
+                    </thead>
+                    <tbody class="jobs-table">
+                        
+                    </tbody>
+                </table>
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -208,6 +232,8 @@
 <!--Index JS Link-->
 <script type="text/javascript" src="./js/index.js"></script>
 <script type="text/javascript" src ="./js/dashboard2.js"></script>
+<!--Dashboard JS Link-->
+<script type="text/javascript" src="./js/dashboard.js"></script>
 
 <script>
 $( document ).ready(function() {

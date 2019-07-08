@@ -1,7 +1,3 @@
-/* eslint-disable semi */
-/* eslint-disable quotes */
-/* eslint-disable prettier/prettier */
-/* eslint-disable indent */
 //Opening Stat Populate Function
 $('.ml9 .letters').each(function(){
     $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));

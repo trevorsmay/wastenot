@@ -1,3 +1,4 @@
+
 // Get references to page elements
 // var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
@@ -10,9 +11,6 @@ var firstName, lastName;
 var API = {
   registerUser: function (user_data) {
     return $.ajax({
-      headers:{
-        "object": "application/json"
-      },
       type: "POST",
       url: "/api/signup",
       
@@ -74,6 +72,12 @@ var API = {
 var newUser;
 $("#register").on("click", function (e) {
  e.preventDefault();
+  })
+
+
+
+$("#register").on("click", function (e) {
+ 
 console.log("something")
 
   var firstName = $("#firstName").val();
@@ -162,11 +166,47 @@ function loginUser(email, password) {
 }
 
 
+// handleFormSubmit is called whenever we submit a new example
+// Save the new example to the db and refresh the list
+var handleFormSubmit = function (event) {
+  event.preventDefault();
+
+  var example = {
+    text: $exampleText.val().trim(),
+    description: $exampleDescription.val().trim()
+  };
+
+  if (!(example.text && example.description)) {
+    alert("You must enter an example text and description!");
+    return;
+  }
+
+  API.saveExample(example).then(function () {
+    refreshExamples();
+  });
+
+  $exampleText.val("");
+  $exampleDescription.val("");
+
+};
+
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
+var handleDeleteBtnClick = function () {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+
+  API.deleteExample(idToDelete).then(function () {
+    refreshExamples();
+  });
+};
+
+
 
 // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
-
+$submitBtn.on("click", handleFormSubmit);
+$exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 var placeSearch, autocomplete;
 
@@ -181,7 +221,19 @@ var componentForm = {
   country: 'long_name',
   postal_code: 'short_name'
 };
+var placeSearch, autocomplete;
 
+// var autocomplete2
+
+var componentForm = {
+
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
 
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search predictions to
@@ -195,13 +247,28 @@ function initAutocomplete() {
 
   // autocomplete2 = new google.maps.places.Autocomplete(
   //     document.getElementById('registrationAutoComplete'), {types: ['geocode']});
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search predictions to
+  // geographical location types.
+  console.log("InitAutoComplete")
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById('autocomplete'), {
+      types: ['geocode']
+    });
+  var place = autocomplete.getPlace();
 
+  // autocomplete2 = new google.maps.places.Autocomplete(
+  //     document.getElementById('registrationAutoComplete'), {types: ['geocode']});
 
   // Avoid paying for data that you don't need by restricting the set of
   // place fields that are returned to just the address components.
   autocomplete.setFields(['address_component']);
   // autocomplete2.setFields(['address_component']);
 
+  // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+  autocomplete.setFields(['address_component']);
+  // autocomplete2.setFields(['address_component']);
 
   // When the user selects an address from the drop-down, populate the
   // address fields in the form.
@@ -209,6 +276,11 @@ function initAutocomplete() {
   // autocomplete2.addListener('place_changed', fillInAddress)
 }
 
+  // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+  autocomplete.addListener('place_changed', fillInAddress);
+  // autocomplete2.addListener('place_changed', fillInAddress)
+}
 
 
 function fillInAddress() {
@@ -261,136 +333,4 @@ function geolocate(event) {
     });
   }
 }
-
-//Populate Donate content function 
-$("#donate-btn").on("click", function() {
-  $(".grab-landing").addClass("hide-content");
-  $(".grab-donate").removeClass("hide-content");
-  $(".donation-confirmation").addClass("hide-content");
-});
-
-//Grab Donation values on donate form submit
-$("#form-donate-submit").on("click", function(e) {
-  e.preventDefault();
-
-  var donateData = [
-    {
-      foodType: $(".food-type").val().trim(),
-      donateQuantity: $(".food-quantity").val().trim(),
-      foodExpire: $(".food-exp").val().trim(),
-      pickupLocation: $(".food-location").val().trim(),
-      pickupTime: $(".pick-up-time").val().trim()
-      // foodComments: $(".food-comments").val().trim()
-    }
-  ];
-
-  modalRender(donateData);
-});
-
-//Render Modal For final submission function
-function modalRender(donateData) {
-
-  var modal = document.getElementById("myModal");
-  var span = document.getElementsByClassName("close")[0];
-
-  modal.style.display = "block";
-
-  var modalDiv = $("<div>");
-  var modalTitle = $("<h1>");
-  modalTitle.html("Are You Sure You Want To Submit This Donation?");
-  modalDiv.append(modalTitle);
-
-  var br1 = $("<br>");
-  modalDiv.append(br1);
-
-  var type = $("<h3>");
-  type.html("Food Type: " + donateData[0].foodType);
-  modalDiv.append(type);
-
-  var br2 = $("<br>");
-  modalDiv.append(br2);
-
-  var quantity = $("<h3>");
-  quantity.html("Food Quantity: " + donateData[0].donateQuantity);
-  modalDiv.append(quantity);
-
-  var br3 = $("<br>");
-  modalDiv.append(br3);
-
-  var expiration = $("<h3>");
-  expiration.html("Food Expiration: " + donateData[0].foodExpire);
-  modalDiv.append(expiration);
-
-  var br4 = $("<br>");
-  modalDiv.append(br4);
-
-  var location = $("<h3>");
-  location.html("Food Location: " + donateData[0].pickupLocation);
-  modalDiv.append(location);
-
-  var br5 = $("<br>");
-  modalDiv.append(br5);
-
-  var time = $("<h3>");
-  time.html("Pick Up Time: " + donateData[0].pickupTime);
-  modalDiv.append(time);
-
-  var br6 = $("<br>");
-  modalDiv.append(br6);
-
-  var comments = $("<h3>");
-  comments.html("Food Comments: " + donateData[0].foodComments);
-  modalDiv.append(comments);
-
-  var br7 = $("<br>");
-  modalDiv.append(br7);
-
-  var submit = $("<button>");
-  submit.addClass("btn btn-success");
-  submit.attr("type", "submit");
-  submit.attr("id", "store-donation");
-  submit.text("Submit");
-  modalDiv.append(submit);
-
-  $(".modal-text").html(modalDiv);
-
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
-  $("#store-donation").on("click", function(e) {
-    e.preventDefault();
-    
-    storeDonation(donateData);
-
-    modal.style.display = "none";
-
-    $(".food-type").val("");
-    $(".food-quantity").val("");
-    $(".food-exp").val("");
-    $(".food-location").val("");
-    $(".food-comments").val("");
-  });
-}
-// everything coming in on the form.
-
-
-function storeDonation(donateData) {
-  donateData = JSON.stringify(donateData[0]);
-  API.postJob(donateData).then(function(data){
-    console.log(data);
-  })
-
-  $(".grab-donate").addClass("hide-content");
-  $(".donation-confirmation").removeClass("hide-content");
-
-  
-}
-
 
